@@ -1,0 +1,123 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "New group",
+        "description": "A group holds the lights that follow the same schedule. Create as many as you need: each one stays independent and can be disabled on its own.",
+        "data": {
+          "name": "Group name",
+          "days": "Active days",
+          "dusk_sensor": "Dusk sensor",
+          "spacing": "Gap between consecutive commands",
+          "retries": "Attempts per command"
+        },
+        "data_description": {
+          "dusk_sensor": "Optional. Only needed if some event should fire on measured darkness rather than on solar time.",
+          "spacing": "Two entities on the same radio receiver, commanded at the same instant, execute only one of the two. One second is usually enough.",
+          "retries": "If the entity does not confirm its state within three seconds, the command is repeated."
+        }
+      },
+      "evento": {
+        "title": "Event {numero}",
+        "description": "When it happens, what happens, and on which lights. The time limits tame solar hours: between December and June sunset moves by three hours.",
+        "data": {
+          "type": "When",
+          "offset": "Offset from solar time",
+          "at": "Time",
+          "not_before": "Never before",
+          "not_after": "Never after",
+          "action": "What to do",
+          "brightness": "Brightness",
+          "entities": "On which entities",
+          "ancora": "Add another event"
+        },
+        "data_description": {
+          "offset": "Negative to bring it forward: -15 switches on a quarter of an hour before sunset.",
+          "at": "Only for fixed-time events.",
+          "brightness": "Only for the \"set brightness\" action."
+        }
+      }
+    },
+    "error": {
+      "orario_mancante": "A fixed-time event needs a time.",
+      "entita_mancanti": "Pick at least one entity."
+    },
+    "abort": {
+      "already_configured": "A group with this name already exists."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Group configuration",
+        "menu_options": {
+          "generale": "Days, sensor and commands",
+          "eventi": "Events"
+        }
+      },
+      "generale": {
+        "title": "Days, sensor and commands",
+        "data": {
+          "days": "Active days",
+          "dusk_sensor": "Dusk sensor",
+          "spacing": "Gap between consecutive commands",
+          "retries": "Attempts per command"
+        }
+      },
+      "eventi": {
+        "title": "Group events",
+        "description": "{quanti} scheduled events. Pick the one to edit, or add a new one.",
+        "data": {
+          "scelta": "Event"
+        }
+      },
+      "evento": {
+        "title": "Event",
+        "data": {
+          "type": "When",
+          "offset": "Offset from solar time",
+          "at": "Time",
+          "not_before": "Never before",
+          "not_after": "Never after",
+          "action": "What to do",
+          "brightness": "Brightness",
+          "entities": "On which entities",
+          "rimuovi": "Remove this event"
+        }
+      }
+    },
+    "error": {
+      "orario_mancante": "A fixed-time event needs a time.",
+      "entita_mancanti": "Pick at least one entity."
+    }
+  },
+  "selector": {
+    "giorni": {
+      "options": {
+        "mon": "Monday",
+        "tue": "Tuesday",
+        "wed": "Wednesday",
+        "thu": "Thursday",
+        "fri": "Friday",
+        "sat": "Saturday",
+        "sun": "Sunday"
+      }
+    },
+    "tipo_evento": {
+      "options": {
+        "sunset": "At sunset",
+        "sunrise": "At sunrise",
+        "time": "At a fixed time",
+        "dusk_dark": "When the sensor reports darkness",
+        "dusk_light": "When the sensor reports light"
+      }
+    },
+    "azione": {
+      "options": {
+        "on": "Switch on",
+        "off": "Switch off",
+        "brightness": "Set brightness"
+      }
+    }
+  }
+}

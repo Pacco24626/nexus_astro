@@ -1,0 +1,123 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Nuovo gruppo",
+        "description": "Un gruppo raccoglie le luci che seguono la stessa programmazione. Puoi crearne quanti ne servono: ognuno resta indipendente e si disattiva per conto suo.",
+        "data": {
+          "name": "Nome del gruppo",
+          "days": "Giorni attivi",
+          "dusk_sensor": "Sonda crepuscolare",
+          "spacing": "Intervallo fra un comando e il successivo",
+          "retries": "Tentativi per comando"
+        },
+        "data_description": {
+          "dusk_sensor": "Facoltativa. Serve solo se qualche evento deve scattare al buio rilevato invece che all'ora solare.",
+          "spacing": "Due entita' sullo stesso ricevitore radio comandate nello stesso istante ne eseguono una sola. Un secondo basta quasi sempre.",
+          "retries": "Se l'entita' non conferma lo stato entro tre secondi, il comando viene ripetuto."
+        }
+      },
+      "evento": {
+        "title": "Evento {numero}",
+        "description": "Quando deve succedere, cosa deve succedere, e su quali luci. I limiti orari servono a domare le ore solari: fra dicembre e giugno il tramonto si sposta di tre ore.",
+        "data": {
+          "type": "Quando",
+          "offset": "Scarto rispetto all'ora solare",
+          "at": "Orario",
+          "not_before": "Mai prima delle",
+          "not_after": "Mai dopo le",
+          "action": "Cosa fare",
+          "brightness": "Intensita'",
+          "entities": "Su quali entita'",
+          "ancora": "Aggiungi un altro evento"
+        },
+        "data_description": {
+          "offset": "Negativo per anticipare: -15 accende un quarto d'ora prima del tramonto.",
+          "at": "Solo per gli eventi a orario fisso.",
+          "brightness": "Solo per l'azione «imposta intensita'»."
+        }
+      }
+    },
+    "error": {
+      "orario_mancante": "Per un evento a orario fisso serve l'orario.",
+      "entita_mancanti": "Scegli almeno un'entita'."
+    },
+    "abort": {
+      "already_configured": "Esiste gia' un gruppo con questo nome."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Configurazione del gruppo",
+        "menu_options": {
+          "generale": "Giorni, sonda e comandi",
+          "eventi": "Eventi"
+        }
+      },
+      "generale": {
+        "title": "Giorni, sonda e comandi",
+        "data": {
+          "days": "Giorni attivi",
+          "dusk_sensor": "Sonda crepuscolare",
+          "spacing": "Intervallo fra un comando e il successivo",
+          "retries": "Tentativi per comando"
+        }
+      },
+      "eventi": {
+        "title": "Eventi del gruppo",
+        "description": "{quanti} eventi programmati. Scegli quello da modificare, oppure aggiungine uno.",
+        "data": {
+          "scelta": "Evento"
+        }
+      },
+      "evento": {
+        "title": "Evento",
+        "data": {
+          "type": "Quando",
+          "offset": "Scarto rispetto all'ora solare",
+          "at": "Orario",
+          "not_before": "Mai prima delle",
+          "not_after": "Mai dopo le",
+          "action": "Cosa fare",
+          "brightness": "Intensita'",
+          "entities": "Su quali entita'",
+          "rimuovi": "Rimuovi questo evento"
+        }
+      }
+    },
+    "error": {
+      "orario_mancante": "Per un evento a orario fisso serve l'orario.",
+      "entita_mancanti": "Scegli almeno un'entita'."
+    }
+  },
+  "selector": {
+    "giorni": {
+      "options": {
+        "mon": "Lunedi",
+        "tue": "Martedi",
+        "wed": "Mercoledi",
+        "thu": "Giovedi",
+        "fri": "Venerdi",
+        "sat": "Sabato",
+        "sun": "Domenica"
+      }
+    },
+    "tipo_evento": {
+      "options": {
+        "sunset": "Al tramonto",
+        "sunrise": "All'alba",
+        "time": "A un orario fisso",
+        "dusk_dark": "Quando la sonda rileva il buio",
+        "dusk_light": "Quando la sonda rileva la luce"
+      }
+    },
+    "azione": {
+      "options": {
+        "on": "Accendi",
+        "off": "Spegni",
+        "brightness": "Imposta intensita'"
+      }
+    }
+  }
+}
