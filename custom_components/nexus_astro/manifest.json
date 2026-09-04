@@ -1,13 +1,17 @@
 {
   "domain": "nexus_astro",
   "name": "Nexus Astro",
-  "codeowners": [],
+  "codeowners": [
+    "@Pacco24626"
+  ],
   "config_flow": true,
-  "dependencies": ["sun"],
+  "dependencies": [
+    "sun"
+  ],
   "documentation": "https://github.com/Pacco24626/nexus_astro",
   "integration_type": "hub",
   "iot_class": "calculated",
   "issue_tracker": "https://github.com/Pacco24626/nexus_astro/issues",
   "requirements": [],
-  "version": "1.0.0"
+  "version": "1.0.1"
 }
