@@ -92,3 +92,7 @@ Facoltativa, e non alternativa all'ora solare: un gruppo può avere eventi al tr
 **e** eventi da sonda. I tetti orari valgono anche per la sonda, il che serve più di
 quanto sembri — una fotocellula coperta da una tenda o sporcata dalla pioggia può
 scattare a mezzogiorno.
+
+## Licenza
+
+Apache 2.0 — Copyright 2026 Automatic Systems. Vedi [LICENSE](LICENSE).
