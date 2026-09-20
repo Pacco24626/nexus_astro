@@ -14,6 +14,8 @@ from homeassistant.components.sensor import SensorDeviceClass, SensorEntity
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.core import HomeAssistant
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
+from homeassistant.helpers.restore_state import RestoreEntity
+from homeassistant.util import dt as dt_util
 
 from .const import DOMAIN, KEY_PROSSIMO, KEY_ULTIMO
 from .controller import AstroController
@@ -54,8 +56,13 @@ class ProssimoEventoSensor(AstroEntity, SensorEntity):
         }
 
 
-class UltimoEventoSensor(AstroEntity, SensorEntity):
-    """Quando e' stato applicato l'ultimo evento."""
+class UltimoEventoSensor(AstroEntity, SensorEntity, RestoreEntity):
+    """Quando e' stato applicato l'ultimo evento.
+
+    Il valore vive nel controller, che riparte vuoto a ogni avvio: senza
+    ripristino l'ultimo evento spariva a ogni riavvio di Home Assistant, anche
+    se le luci erano state comandate poche ore prima.
+    """
 
     _attr_name = "Ultimo evento"
     _attr_icon = "mdi:history"
@@ -63,6 +70,19 @@ class UltimoEventoSensor(AstroEntity, SensorEntity):
 
     def __init__(self, controller: AstroController) -> None:
         super().__init__(controller, KEY_ULTIMO)
+
+    async def async_added_to_hass(self) -> None:
+        await super().async_added_to_hass()
+        if self.controller.ultimo_evento is not None:
+            return
+        ultimo = await self.async_get_last_state()
+        if ultimo is None or ultimo.state in (None, "unknown", "unavailable"):
+            return
+        quando = dt_util.parse_datetime(ultimo.state)
+        if quando is None:
+            return
+        self.controller.ultimo_evento = quando
+        self.controller.ultimo_nome = ultimo.attributes.get("descrizione")
 
     @property
     def native_value(self) -> datetime | None:
