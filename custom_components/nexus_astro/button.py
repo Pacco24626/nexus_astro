@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from homeassistant.components.button import ButtonEntity
 from homeassistant.config_entries import ConfigEntry
+from homeassistant.const import EntityCategory
 from homeassistant.core import HomeAssistant
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
 
@@ -27,6 +28,10 @@ class RiallineaButton(AstroEntity, ButtonEntity):
     """
 
     _attr_name = "Riallinea adesso"
+    # Governa un comportamento, non e' un dispositivo da accendere: con la
+    # categoria «config» Home Assistant non lo espone agli assistenti vocali,
+    # dove un comando generico se lo porterebbe via insieme alle lampade.
+    _attr_entity_category = EntityCategory.CONFIG
     _attr_icon = "mdi:autorenew"
 
     def __init__(self, controller: AstroController) -> None:

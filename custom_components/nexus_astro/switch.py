@@ -6,6 +6,7 @@ from typing import Any
 
 from homeassistant.components.switch import SwitchEntity
 from homeassistant.config_entries import ConfigEntry
+from homeassistant.const import EntityCategory
 from homeassistant.core import HomeAssistant
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
 from homeassistant.helpers.restore_state import RestoreEntity
@@ -30,6 +31,10 @@ class AbilitazioneSwitch(AstroEntity, SwitchEntity, RestoreEntity):
     """
 
     _attr_name = "Abilitato"
+    # Governa un comportamento, non e' un dispositivo da accendere: con la
+    # categoria «config» Home Assistant non lo espone agli assistenti vocali,
+    # dove un comando generico se lo porterebbe via insieme alle lampade.
+    _attr_entity_category = EntityCategory.CONFIG
     _attr_icon = "mdi:sun-clock"
 
     def __init__(self, controller: AstroController) -> None:
