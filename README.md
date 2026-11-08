@@ -17,10 +17,11 @@ mette su ogni voce. Nessun elenco da ridichiarare, nessun menu costruito a mano.
 
 ## Installazione
 
-1. HACS → menu ⋮ → **Repository personalizzate**
-2. URL `https://github.com/Pacco24626/nexus_astro`, categoria **Integration**
-3. Installa, poi **riavvia Home Assistant**
-4. **Impostazioni → Dispositivi e servizi → Aggiungi integrazione → Nexus Astro**
+1. In **HACS** — da Home Assistant 2026.11 si chiama **Marketplace**, in *Impostazioni* — cerca **Nexus Astro** e installala
+2. **Riavvia Home Assistant**
+3. **Impostazioni → Dispositivi e servizi → Aggiungi integrazione → Nexus Astro**
+
+> Per provare una versione non ancora pubblicata si può aggiungere questo repository a mano, come *repository personalizzato* di categoria **Integration**: `https://github.com/Pacco24626/nexus_astro`
 
 Requisiti: Home Assistant 2024.12 o superiore.
 
